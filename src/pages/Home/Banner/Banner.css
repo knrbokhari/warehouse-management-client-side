@@ -1,0 +1,47 @@
+.fast-slide,
+.second-slide,
+.thread-slide{
+    height: 400px;
+    display: block;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.fast-slide{
+    background-image: url(https://images.unsplash.com/photo-1627309366653-2dedc084cdf1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1966&q=80);
+
+}
+.second-slide{
+    background-image: url(https://images.unsplash.com/photo-1551471721-d3f1783e3603?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80);
+
+}
+.thread-slide{
+    background-image: url(https://images.unsplash.com/photo-1561666559-69372c51f85e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1167&q=80);
+
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+    .fast-slide,
+    .second-slide,
+    .thread-slide{
+        height: 550px;
+    }
+ }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .fast-slide,
+    .second-slide,
+    .thread-slide{
+        height: 600px;
+    }
+ }
+
+/*  Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .fast-slide,
+    .second-slide,
+    .thread-slide{
+        height: 650px;
+    }
+ }
