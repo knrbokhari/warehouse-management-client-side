@@ -5,27 +5,34 @@ import { Carousel } from "react-bootstrap";
 const banner = () => {
   return (
     <Carousel>
-      <Carousel.Item className="fast-slide" interval={1000}>
+      <Carousel.Item className="fast-slide slide" interval={1000}>
         <Carousel.Caption>
           <h3>Distribution, Storage, Warehousing & Fulfillment.</h3>
           <p>
             Your solution for first class warehousing services for the goods,
             food, grocery, pharmaceutical and general commodity industries.
           </p>
+          <button className="slide-button">Our Services</button>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item className="second-slide" interval={500}>
+      <Carousel.Item className="second-slide slide" interval={500}>
         <Carousel.Caption>
-          <h3>Depot Helping To Grow Your Business.</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>
+            Depot Helping To Grow Your{" "}
+            <span style={{ color: "#f0e246" }}>Business</span>.
+          </h3>
+          <p>Let Us Help You to Find a Solution That Meets Your Needs.</p>
+          <button className="slide-button">Our Services</button>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item className="thread-slide">
+      <Carousel.Item className="thread-slide slide">
         <Carousel.Caption>
-          <h3> Depot Delivering solid plans to success!</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <h3>
+            Depot Delivering solid plans to{" "}
+            <span style={{ color: "#f0e246" }}>success</span>!
+          </h3>
+          <p>Kick off your business in the right way with our solutions.</p>
+          <button className="slide-button">Our Services</button>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

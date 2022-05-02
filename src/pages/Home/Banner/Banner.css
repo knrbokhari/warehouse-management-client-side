@@ -1,6 +1,4 @@
-.fast-slide,
-.second-slide,
-.thread-slide{
+.slide{
     height: 400px;
     display: block;
     background-position: center;
@@ -19,29 +17,48 @@
     background-image: url(https://images.unsplash.com/photo-1561666559-69372c51f85e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1167&q=80);
 
 }
+.slide h3{
+    font-size: 40px;
+}
+.slide p{
+    font-size: 18px;
+}
+.slide-button{
+    font-weight: 600;
+    color: #233859;
+    background-color: #f0e246;
+    font-size: 18px;
+    padding: 17px 15px;
+    border: 2px solid;
+    border-color: #f0e246;
+    border-radius: 35px;
+    margin-bottom: 100px;
+}
+
+.slide-button:hover{
+    color: #ffffff;
+    background-color: #233859;
+    border-color: #233859;
+}
+
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
-    .fast-slide,
-    .second-slide,
-    .thread-slide{
+    .slide{
         height: 550px;
     }
  }
 
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
-    .fast-slide,
-    .second-slide,
-    .thread-slide{
+    .slide{
         height: 600px;
     }
  }
 
 /*  Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
-    .fast-slide,
-    .second-slide,
-    .thread-slide{
+    .slide{
         height: 650px;
     }
  }
