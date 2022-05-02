@@ -23,7 +23,7 @@
 .slide p{
     font-size: 18px;
 }
-.slide-button{
+button{
     font-weight: 600;
     color: #233859;
     background-color: #f0e246;
@@ -35,12 +35,18 @@
     margin-bottom: 100px;
 }
 
-.slide-button:hover{
+button:hover{
     color: #ffffff;
     background-color: #233859;
     border-color: #233859;
 }
 
+.btn-google{
+    color: #3565b2;
+}
+.btn-google:hover{
+    color: #3565b2;
+}
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 

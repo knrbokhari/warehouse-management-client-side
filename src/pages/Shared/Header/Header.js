@@ -19,7 +19,7 @@ const Header = () => {
               <CustomLink className="fs-3 px-3 fw-bold" to="/">
                 Home
               </CustomLink>
-              <CustomLink className="fs-3 px-3 fw-bold" to="/">
+              <CustomLink className="fs-3 px-3 fw-bold" to="/inventory/:id">
                 Inventory
               </CustomLink>
               <CustomLink className="fs-3 px-3 fw-bold" to="/about">
