@@ -27,13 +27,12 @@ button{
     font-weight: 600;
     color: #233859;
     background-color: #f0e246;
-    font-size: 18px;
     padding: 17px 15px;
     border: 2px solid;
     border-color: #f0e246;
-    border-radius: 35px;
     margin-bottom: 100px;
 }
+
 
 button:hover{
     color: #ffffff;

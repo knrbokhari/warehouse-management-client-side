@@ -21,7 +21,7 @@ const Login = () => {
             <h2 className="text-center" style={{ fontSize: "30px" }}>
               Login
             </h2>
-            <p className="m-0 fs-5" style={{ color: "#6f6f6f" }}>
+            <p className="m-0 fs-5 text-center" style={{ color: "#6f6f6f" }}>
               See your growth and get consulting support!
             </p>
             <button
@@ -48,8 +48,8 @@ const Login = () => {
                 style={{ borderBottom: "2px solid #dfdfdf", width: "40%" }}
               ></div>
               <div
-                className="mx-3 fs-5"
-                style={{ width: "200px", color: "#6f6f6f" }}
+                className="mx-3 fs-5 text-center"
+                style={{ width: "365px", color: "#6f6f6f" }}
               >
                 Or Sign in with Email
               </div>
@@ -60,6 +60,7 @@ const Login = () => {
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label className="fs-5">Email address</Form.Label>
               <Form.Control
+                required
                 className="fs-5"
                 type="email"
                 placeholder="Enter email"
@@ -68,6 +69,7 @@ const Login = () => {
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label className="fs-5">Password</Form.Label>
               <Form.Control
+                required
                 className="fs-5"
                 type="password"
                 placeholder="Password"
