@@ -9,11 +9,11 @@ import SignUp from "./pages/Login/SignUp/SignUp";
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/inventory/:id" element={<Inventory></Inventory>}></Route>
+        <Route path="/inventory" element={<Inventory></Inventory>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
       </Routes>

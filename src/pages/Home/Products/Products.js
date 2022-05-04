@@ -16,7 +16,7 @@ const Products = (props) => {
           </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroupItem>Supplier Name: {supplierName}</ListGroupItem>
+          <ListGroupItem>Supplier: {supplierName}</ListGroupItem>
           <ListGroupItem>Price: ${price}</ListGroupItem>
           <ListGroupItem>Quantity: {quantity}</ListGroupItem>
         </ListGroup>

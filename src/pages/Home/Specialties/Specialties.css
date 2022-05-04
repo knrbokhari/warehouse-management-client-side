@@ -1,0 +1,20 @@
+.Specialties{
+    color: #fff;
+}
+.Specialties h2{
+    font-weight: 300;
+    font-size: 32px;
+}
+.Specialties img{
+    width: 50px;
+}
+.Specialties h4{
+    margin: 0;
+    margin-left: 15px;
+    font-size: 20px;
+}
+.Specialties p{
+    margin: 0;
+    margin-top: 15px;
+    font-size: 15px;
+}

@@ -23,7 +23,7 @@
 .slide p{
     font-size: 18px;
 }
-button{
+.buttons{
     font-weight: 600;
     color: #233859;
     background-color: #f0e246;
@@ -34,7 +34,7 @@ button{
 }
 
 
-button:hover{
+.buttons-hover:hover{
     color: #ffffff;
     background-color: #233859;
     border-color: #233859;

@@ -13,6 +13,7 @@ const banner = () => {
             food, grocery, pharmaceutical and general commodity industries.
           </p>
           <button
+            className="buttons buttons-hover"
             style={{
               marginBottom: "100px",
               fontSize: "18px",
@@ -32,6 +33,7 @@ const banner = () => {
           </h3>
           <p>Let Us Help You to Find a Solution That Meets Your Needs.</p>
           <button
+            className="buttons buttons-hover"
             style={{
               marginBottom: "100px",
               fontSize: "18px",
@@ -51,6 +53,7 @@ const banner = () => {
           </h3>
           <p>Kick off your business in the right way with our solutions.</p>
           <button
+            className="buttons buttons-hover"
             style={{
               marginBottom: "100px",
               fontSize: "18px",
