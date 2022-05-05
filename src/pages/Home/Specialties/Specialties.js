@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button, Form, Modal } from "react-bootstrap";
 import "./Specialties.css";
 
 const Specialties = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div>
       <div className="background">
@@ -82,11 +88,55 @@ const Specialties = () => {
               width: "200px",
               fontSize: "17px",
               borderRadius: "50px",
-              height: "75px",
+              height: "60px",
             }}
+            onClick={handleShow}
           >
             LEARN MORE
           </button>
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title className="text-center">
+                Request a Callback
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p className="text-center fs-5">
+                We can email you in 90 seconds, just enter your email below
+              </p>
+              <Form>
+                <Form.Group
+                  className="mb-3 fs-4"
+                  controlId="exampleForm.ControlInput1"
+                >
+                  <Form.Control type="text" placeholder="Name *" autoFocus />
+                </Form.Group>
+                <Form.Group
+                  className="mb-3 fs-4"
+                  controlId="exampleForm.ControlInput1"
+                >
+                  <Form.Control type="email" placeholder="Email *" />
+                </Form.Group>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <button
+                style={{
+                  height: "32px",
+                  padding: "0 20px",
+                  borderRadius: "5px",
+                }}
+                className="buttons buttons-hover"
+                onClick={handleClose}
+              >
+                REQUEST
+              </button>
+            </Modal.Footer>
+          </Modal>
         </div>
       </div>
     </div>

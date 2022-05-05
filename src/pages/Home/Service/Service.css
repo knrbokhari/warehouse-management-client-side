@@ -1,0 +1,13 @@
+.service-details h3{
+    color: #233859;
+}
+.service-details h3:hover{
+    color: #f0e246;
+    cursor: pointer;
+}
+.service-line{
+    width: 50px;
+    background-color: #f0e246;
+    height: 4px;
+    margin: 15px 0 7px;
+}

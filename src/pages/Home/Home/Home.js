@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useProduct from "../../../hooks/useProduct";
 import Banner from "../Banner/Banner";
 import Products from "../Products/Products";
+import Services from "../Services/Services";
 import Specialties from "../Specialties/Specialties";
 import "./Home.css";
 
@@ -11,7 +12,7 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-
+      <Services></Services>
       <div className="container">
         <h2 className="pt-5">Inventory</h2>
         <div className="row mt-5 justify-content-center">
