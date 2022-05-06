@@ -6,6 +6,7 @@ import Footer from "./pages/Shared/Footer/Footer";
 import Login from "./pages/Login/Login/Login";
 import Inventory from "./pages/Home/Inventory/Inventory";
 import SignUp from "./pages/Login/SignUp/SignUp";
+import UpdateInventory from "./pages/UpdateInventory/UpdateInventory";
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/inventory" element={<Inventory></Inventory>}></Route>
+        <Route
+          path="/inventory/:productId"
+          element={<UpdateInventory></UpdateInventory>}
+        ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
       </Routes>

@@ -3,6 +3,12 @@ import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password);
+  };
   return (
     <div className="container my-5">
       <div className="row justify-content-center">
@@ -17,7 +23,7 @@ const Login = () => {
           ></div>
         </div>
         <div className="col-11 col-md-5">
-          <Form style={{ width: "100%" }}>
+          <Form onSubmit={handleLogin} style={{ width: "100%" }}>
             <h2 className="text-center" style={{ fontSize: "30px" }}>
               Login
             </h2>
@@ -62,6 +68,7 @@ const Login = () => {
               <Form.Control
                 required
                 className="fs-5"
+                name="email"
                 type="email"
                 placeholder="Enter email"
               />
@@ -71,6 +78,7 @@ const Login = () => {
               <Form.Control
                 required
                 className="fs-5"
+                name="password"
                 type="password"
                 placeholder="Password"
               />
@@ -80,7 +88,7 @@ const Login = () => {
             </button>
             <br />
             <button
-              className="w-100 d-block fs-5 p-2"
+              className="w-100 d-block buttons buttons-hover m-0 fs-5 p-2"
               type="submit"
               style={{ borderRadius: "15px" }}
             >

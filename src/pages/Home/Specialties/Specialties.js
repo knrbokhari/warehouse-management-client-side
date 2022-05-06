@@ -19,9 +19,9 @@ const Specialties = () => {
           >
             Best Solution for Your Needs
           </p>
-          <div className="row">
-            <div className="col-md-4">
-              <div className="d-flex align-items-center">
+          <div className="row justify-content-center">
+            <div className="col-11 col-md-4 mb-4 m-md-0 text-md-center">
+              <div className="d-flex align-items-center justify-content-md-center">
                 <img
                   src="https://i.ibb.co/CM3K8Fm/mt-1508-home-icon1.png"
                   alt=""
@@ -33,8 +33,8 @@ const Specialties = () => {
                 long- or short-term storage
               </p>
             </div>
-            <div className="col-md-4">
-              <div className="d-flex align-items-center">
+            <div className="col-11 col-md-4 mb-4 m-md-0 text-md-center">
+              <div className="d-flex align-items-center justify-content-md-center">
                 <img
                   src="https://i.ibb.co/3zb8p9t/mt-1508-home-icon2.png"
                   alt=""
@@ -46,8 +46,8 @@ const Specialties = () => {
                 fulfill all your orders
               </p>
             </div>
-            <div className="col-md-4">
-              <div className="d-flex align-items-center">
+            <div className="col-11 col-md-4 mb-4 m-md-0 text-md-center">
+              <div className="d-flex align-items-center justify-content-md-center">
                 <img
                   src="https://i.ibb.co/HdMT1cH/mt-1508-home-icon3.png"
                   alt=""
@@ -69,6 +69,7 @@ const Specialties = () => {
           fontWeight: "400",
           color: "#fff",
           backgroundColor: "#1f3d6c",
+          margin: "0",
         }}
       >
         <div className="col-11 col-sm-8 mx-auto text-center">
@@ -96,13 +97,13 @@ const Specialties = () => {
           </button>
 
           <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title className="text-center">
+            <Modal.Header>
+              <Modal.Title className="mx-auto fs-3">
                 Request a Callback
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <p className="text-center fs-5">
+              <p className="text-center fs-5" style={{ color: "#6c757d" }}>
                 We can email you in 90 seconds, just enter your email below
               </p>
               <Form>
@@ -110,13 +111,18 @@ const Specialties = () => {
                   className="mb-3 fs-4"
                   controlId="exampleForm.ControlInput1"
                 >
-                  <Form.Control type="text" placeholder="Name *" autoFocus />
+                  <Form.Control
+                    type="text"
+                    placeholder="Name *"
+                    required
+                    autoFocus
+                  />
                 </Form.Group>
                 <Form.Group
                   className="mb-3 fs-4"
                   controlId="exampleForm.ControlInput1"
                 >
-                  <Form.Control type="email" placeholder="Email *" />
+                  <Form.Control type="email" placeholder="Email *" required />
                 </Form.Group>
               </Form>
             </Modal.Body>

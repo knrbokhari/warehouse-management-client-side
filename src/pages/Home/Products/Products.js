@@ -1,12 +1,18 @@
 import React from "react";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Products = (props) => {
-  const { image, name, discription, quantity, supplierName, price } =
+  const { _id, image, name, discription, quantity, supplierName, price } =
     props.product;
+
+  const navigate = useNavigate();
+  const navigateToProduct = (id) => {
+    navigate(`/inventory/${id}`);
+  };
+
   return (
-    <div className="col-12 col-sm-6 col-md-4 mb-5 d-flex justify-content-center">
+    <div className="col-11 col-sm-6 col-md-4 mb-5 d-flex justify-content-center">
       <Card style={{ width: "400px" }}>
         <Card.Img variant="top" src={image} />
         <Card.Body>
@@ -21,7 +27,7 @@ const Products = (props) => {
           <ListGroupItem>Quantity: {quantity}</ListGroupItem>
         </ListGroup>
         <Card.Body>
-          <Link to="/">Stock Update</Link>
+          <button onClick={() => navigateToProduct(_id)}>Stock Update</button>
         </Card.Body>
       </Card>
     </div>
