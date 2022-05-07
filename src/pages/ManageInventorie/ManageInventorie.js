@@ -3,9 +3,11 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import useProduct from "../../hooks/useProduct";
 import { faTrashAlt, faCloudUpload } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const ManageInventorie = () => {
   const [products, setProducts] = useProduct();
+  const navigate = useNavigate();
 
   // item number
   let num = 0;
@@ -29,7 +31,10 @@ const ManageInventorie = () => {
     }
   };
 
-  //
+  // handleUpdateProduct
+  const handleUpdateProduct = (id) => {
+    navigate(`/updateproduct/${id}`);
+  };
 
   //
   return (
@@ -88,6 +93,7 @@ const ManageInventorie = () => {
                     height: "40px",
                     borderRadius: "15px",
                   }}
+                  onClick={() => handleUpdateProduct(product._id)}
                   className="btn btn-success  d-block mx-auto"
                 >
                   <FontAwesomeIcon

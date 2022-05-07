@@ -8,7 +8,7 @@ import Specialties from "../Specialties/Specialties";
 import "./Home.css";
 
 const Home = () => {
-  const [products, setProducts] = useProduct();
+  const [products] = useProduct();
   return (
     <div>
       <Banner></Banner>

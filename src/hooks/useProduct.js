@@ -12,7 +12,7 @@ const useProduct = () => {
     fetchUrl();
   }, []);
 
-  return [products, setProducts];
+  return [products];
 };
 
 export default useProduct;

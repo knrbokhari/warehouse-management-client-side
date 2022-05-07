@@ -9,6 +9,7 @@ import SignUp from "./pages/Login/SignUp/SignUp";
 import UpdateInventory from "./pages/UpdateInventory/UpdateInventory";
 import RequireAuth from "./hooks/RequireAuth";
 import ManageInventorie from "./pages/ManageInventorie/ManageInventorie";
+import UpdateSingelProduct from "./pages/UpdateSingelProduct/UpdateSingelProduct";
 
 function App() {
   return (
@@ -28,6 +29,10 @@ function App() {
         <Route
           path="/manageinventorie"
           element={<ManageInventorie></ManageInventorie>}
+        ></Route>
+        <Route
+          path="/updateproduct/:productId"
+          element={<UpdateSingelProduct></UpdateSingelProduct>}
         ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
