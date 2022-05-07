@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import {
   createUserWithEmailAndPassword,
@@ -9,9 +9,24 @@ import {
 import auth from "../../../firebase.init";
 
 const SignUp = () => {
-  const [signInWithGoogle, googleLoading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
   const [errors, setError] = useState("");
-  console.log(error.message);
+
+  // navigate & location for from
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  // google user
+  if (googleLoading) {
+    navigate(from, { replace: true });
+  }
+
+  // google Error
+  if (googleError) {
+    setError(googleError?.message);
+  }
 
   // sign up user using email & password
   const handleSignUp = (e) => {
@@ -23,10 +38,10 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         if (user) {
-          // navigate(from, { replace: true });
+          navigate(from, { replace: true });
         }
         verifiEmail();
-        // alert("Verification email sent");
+        alert("Verification email sent");
         // reset input field
         e.target.reset();
         setError("");

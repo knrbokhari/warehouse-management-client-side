@@ -5,21 +5,50 @@ import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading/Loading";
 
 const Login = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
+  const [sendPasswordResetEmail, sending, error2] =
+    useSendPasswordResetEmail(auth);
+
+  // navigate & location for
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   // handle Modal
   const [show, setShow] = useState(false);
   const emailRef = useRef("");
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+
+  // Error handle
+  let handleError;
+  if (error || googleError || error2) {
+    handleError = (
+      <>
+        {error?.message}
+        {error2?.message}
+        {googleError?.message}
+      </>
+    );
+  }
+
+  /// user
+  if (user || googleUser) {
+    navigate(from, { replace: true });
+  }
+
+  // loading
+  if (loading || googleLoading || sending) {
+    return <Loading></Loading>;
+  }
 
   // login user using email & password
   const handleLogin = (e) => {
@@ -40,6 +69,7 @@ const Login = () => {
       setShow(false);
       await sendPasswordResetEmail(email);
       setTimeout(alert("Sent email"), 1000);
+      alert("Sent email");
     } else {
       alert("please enter your email address");
     }
@@ -84,6 +114,7 @@ const Login = () => {
             />
             <p className="m-0 fs-5 ">Sign in with Google</p>
           </button>
+          <p className="mb-3 text-danger fs-5 text-center">{handleError}</p>
           <div className="d-flex align-items-center">
             <div
               style={{ borderBottom: "2px solid #dfdfdf", width: "40%" }}

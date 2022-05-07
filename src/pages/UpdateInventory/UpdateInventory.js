@@ -7,6 +7,20 @@ const UpdateInventory = () => {
   const [product, setProduct] = useOneProduct(productId);
   const { _id, image, name, discription, quantity, supplierName, price } =
     product;
+
+  const handleUpdateQuantity = () => {};
+
+  //
+  const handleRestock = () => {
+    const name = prompt("prompt - Please enter your name");
+    if (!isNaN(name)) {
+      console.log(name);
+    } else {
+      alert("please give a number");
+    }
+  };
+
+  //
   return (
     <div className="container">
       <h2 className="text-center my-5">UpdateInventory</h2>
@@ -23,8 +37,8 @@ const UpdateInventory = () => {
           <p>supplierName: {supplierName}</p>
           <p>Price: ${price}</p>
           <div className="d-flex">
-            <button>Delivered</button>
-            <button>restock</button>
+            <button onClick={handleUpdateQuantity}>Delivered</button>
+            <button onClick={handleRestock}>restock</button>
           </div>
         </div>
       </div>

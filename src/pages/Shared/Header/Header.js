@@ -38,6 +38,16 @@ const Header = () => {
             </Nav>
             <Nav>
               {user ? (
+                <CustomLink
+                  className="fs-3 px-3 fw-bold"
+                  to="/manageinventorie"
+                >
+                  Manage Inventorie
+                </CustomLink>
+              ) : (
+                ""
+              )}
+              {user ? (
                 <button
                   onClick={logout}
                   className="fs-3 bg-transparent border-0 px-3 p-0 fw-bold"
