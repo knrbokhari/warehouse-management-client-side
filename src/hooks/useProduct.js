@@ -10,7 +10,7 @@ const useProduct = () => {
       setProducts(data);
     };
     fetchUrl();
-  }, []);
+  }, [products]);
 
   return [products];
 };

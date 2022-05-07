@@ -3,7 +3,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import useProduct from "../../hooks/useProduct";
 import { faTrashAlt, faCloudUpload } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ManageInventorie = () => {
   const [products, setProducts] = useProduct();
@@ -31,7 +31,7 @@ const ManageInventorie = () => {
     }
   };
 
-  // handleUpdateProduct
+  // handle Update Product
   const handleUpdateProduct = (id) => {
     navigate(`/updateproduct/${id}`);
   };
@@ -106,7 +106,7 @@ const ManageInventorie = () => {
           ))}
         </tbody>
       </Table>
-      <button>Add New Product</button>
+      <Link to="/addproduct">Add New Product</Link>
     </div>
   );
 };

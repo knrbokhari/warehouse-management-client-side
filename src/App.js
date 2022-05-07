@@ -10,6 +10,7 @@ import UpdateInventory from "./pages/UpdateInventory/UpdateInventory";
 import RequireAuth from "./hooks/RequireAuth";
 import ManageInventorie from "./pages/ManageInventorie/ManageInventorie";
 import UpdateSingelProduct from "./pages/UpdateSingelProduct/UpdateSingelProduct";
+import AddProduct from "./pages/AddProduct/AddProduct";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           path="/updateproduct/:productId"
           element={<UpdateSingelProduct></UpdateSingelProduct>}
         ></Route>
+        <Route path="/addproduct" element={<AddProduct></AddProduct>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
       </Routes>
