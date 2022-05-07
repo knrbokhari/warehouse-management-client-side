@@ -4,43 +4,63 @@ import useOneProduct from "../../hooks/useOneProduct";
 
 const UpdateInventory = () => {
   let { productId } = useParams();
-  const [product] = useOneProduct(productId);
+  const [product, setProduct] = useOneProduct(productId);
   const { _id, image, name, discription, quantity, supplierName, price, sold } =
     product;
 
   // Update Quantity
-  const handleUpdateQuantity = () => {};
+  const handleUpdateQuantity = () => {
+    let { quantity, sold, ...rest } = product;
+    const newQuantity = quantity - 1;
+    const newSold = sold + 1;
+    const newProduct = { quantity: newQuantity, sold: newSold, ...rest };
+    setProduct(newProduct);
+  };
 
   // Restock product
   const handleRestock = () => {
     const restock = prompt("update Your stock");
     if (!isNaN(restock)) {
       console.log(restock);
-      const updateStock = { restock };
-
-      // send data to the server
-      //   const url = `http://localhost:5000/product/${productId}`;
-      //   fetch(url, {
-      //     method: "PUT",
-      //     headers: {
-      //       "content-type": "application/json",
-      //     },
-      //     body: JSON.stringify(updateStock),
-      //   })
-      //     .then((res) => res.json())
-      //     .then((data) => {
-      //       console.log("success", data);
-      //       alert("update successfully!!!");
-      //     });
-      // } else {
-      //   alert("please give a number");
+      let { quantity, ...rest } = product;
+      const newQuantity = restock;
+      const newProduct = { quantity: newQuantity, ...rest };
+      setProduct(newProduct);
+    } else {
+      alert("please give a number");
     }
+  };
+
+  // Update Product
+  const handleUpdateProduct = (event) => {
+    //
+    const updateProduct = {
+      quantity: quantity,
+      sold: sold,
+      discription: discription,
+      price: price,
+    };
+
+    // send data to the server
+    const url = `https://calm-eyrie-49116.herokuapp.com/product/${productId}`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("success", data);
+        alert("update successfully!!!");
+      });
   };
 
   //
   return (
     <div className="container">
-      <h2 className="text-center my-5">UpdateInventory</h2>
+      <h2 className="text-center my-5">Update Inventory</h2>
 
       <div className="row justify-content-center align-items-center">
         <div className="col-11 col-sm-6">
@@ -55,9 +75,12 @@ const UpdateInventory = () => {
           <p>Price: ${price}</p>
           <p>sold: {sold}</p>
           <div className="d-flex">
-            <button onClick={handleUpdateQuantity}>Delivered</button>
+            <button disabled={quantity === 0} onClick={handleUpdateQuantity}>
+              Delivered
+            </button>
             <button onClick={handleRestock}>restock</button>
           </div>
+          <button onClick={handleUpdateProduct}>Save Change</button>
         </div>
       </div>
     </div>

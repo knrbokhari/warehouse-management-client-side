@@ -7,7 +7,7 @@ const UpdateSingelProduct = () => {
   const [product, setProduct] = useOneProduct(productId);
   const { image, name, discription, supplierName, sold, price } = product;
 
-  //
+  // discription
   const handelDiscription = (e) => {
     const { discription, ...rest } = product;
     const newDiscription = e.target.value;
@@ -15,13 +15,13 @@ const UpdateSingelProduct = () => {
     setProduct(newProduct);
   };
 
-  // Update User
-  const handleUpdateUser = (event) => {
+  // Update Product
+  const handleUpdateProduct = (event) => {
     event.preventDefault();
     const newQuantity = event.target.newQuantity.value;
     const newPrice = event.target.newPrice.value;
 
-    const updateUser = {
+    const updateProduct = {
       quantity: newQuantity,
       price: newPrice <= 0 ? price : newPrice,
       discription: discription,
@@ -35,7 +35,7 @@ const UpdateSingelProduct = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(updateUser),
+      body: JSON.stringify(updateProduct),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -54,7 +54,7 @@ const UpdateSingelProduct = () => {
           <img src={image} alt="" width="100%" />
         </div>
         <div className="col-11 col-md-7">
-          <form onSubmit={handleUpdateUser} className="text-left fs-4">
+          <form onSubmit={handleUpdateProduct} className="text-left fs-4">
             <input
               type="text"
               name="name"
