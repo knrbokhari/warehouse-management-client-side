@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useParams } from "react-router-dom";
 import useOneProduct from "../../hooks/useOneProduct";
 
@@ -8,31 +8,34 @@ const UpdateInventory = () => {
   const { _id, image, name, discription, quantity, supplierName, price, sold } =
     product;
 
+  const restokRef = useRef("");
+
   // Update Quantity
   const handleUpdateQuantity = () => {
     let { quantity, sold, ...rest } = product;
-    const newQuantity = quantity - 1;
-    const newSold = sold + 1;
+    const newQuantity = parseInt(quantity) - 1;
+    const newSold = parseInt(sold) + 1;
     const newProduct = { quantity: newQuantity, sold: newSold, ...rest };
     setProduct(newProduct);
   };
 
   // Restock product
   const handleRestock = () => {
-    const restock = prompt("update Your stock");
+    const restock = restokRef.current.value;
+    // const restock = prompt("update Your stock");
     if (!isNaN(restock)) {
-      console.log(restock);
       let { quantity, ...rest } = product;
       const newQuantity = restock;
       const newProduct = { quantity: newQuantity, ...rest };
       setProduct(newProduct);
+      restokRef.current.value = "";
     } else {
       alert("please give a number");
     }
   };
 
   // Update Product
-  const handleUpdateProduct = (event) => {
+  const handleUpdateProduct = () => {
     //
     const updateProduct = {
       quantity: quantity,
@@ -52,7 +55,6 @@ const UpdateInventory = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("success", data);
         alert("update successfully!!!");
       });
   };
@@ -67,20 +69,49 @@ const UpdateInventory = () => {
           <img src={image} alt="" width="100%" />
         </div>
         <div className="col-11 col-sm-6">
-          <p>Id: {_id}</p>
-          <p>name: {name}</p>
-          <p>supplierName: {supplierName}</p>
-          <p>discription: {discription}</p>
-          <p>quantity: {quantity}</p>
-          <p>Price: ${price}</p>
-          <p>sold: {sold}</p>
-          <div className="d-flex">
-            <button disabled={quantity === 0} onClick={handleUpdateQuantity}>
+          <p className="fs-5 mb-2">Id: {_id}</p>
+          <p className="fs-5 mb-2">Name: {name}</p>
+          <p className="fs-5 mb-2">Supplier Name: {supplierName}</p>
+          <p className="fs-5 mb-2">Discription: {discription}</p>
+          <p className="fs-5 mb-2">Quantity: {quantity}</p>
+          <p className="fs-5 mb-2">Price: ${price}</p>
+          <p className="fs-5 mb-2">Sold: {sold}</p>
+        </div>
+        <div className="row justify-content-center">
+          <div className="col-11 col-sm-6 col-md-3 ">
+            <input
+              type="number"
+              ref={restokRef}
+              placeholder="restock items"
+              className="fs-5 px-2 me-2 w-100 d-block mt-2"
+            />
+          </div>
+          <div className="col-11 col-sm-6 col-md-3 ">
+            <button
+              className="btn btn-success fs-5 w-100 d-block mt-2"
+              onClick={handleRestock}
+            >
+              Restock
+            </button>
+          </div>
+          <div className="col-11 col-sm-6 col-md-3 ">
+            <button
+              className="btn btn-danger fs-5 w-100 d-block mt-2"
+              disabled={quantity === 0}
+              onClick={handleUpdateQuantity}
+            >
               Delivered
             </button>
-            <button onClick={handleRestock}>restock</button>
           </div>
-          <button onClick={handleUpdateProduct}>Save Change</button>
+          <div className="col-11 col-sm-6 col-md-3">
+            <button
+              style={{ height: "36px", padding: "4px", borderRadius: "5px" }}
+              className="buttons buttons-hover mb-5 fs-5 w-100 d-block mt-2"
+              onClick={handleUpdateProduct}
+            >
+              Save Change
+            </button>
+          </div>
         </div>
       </div>
     </div>

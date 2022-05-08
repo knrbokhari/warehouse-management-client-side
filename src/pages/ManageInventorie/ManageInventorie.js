@@ -1,22 +1,43 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
 import { Table } from "react-bootstrap";
-import useProduct from "../../hooks/useProduct";
 import { faTrashAlt, faCloudUpload } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import auth from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
+import axiosPrivate from "../../api/axiosPrivate";
 
 const ManageInventorie = () => {
-  const [products, setProducts] = useProduct();
+  const [user] = useAuthState(auth);
+  const [products, setProducts] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const email = user?.email;
+      const url = `https://calm-eyrie-49116.herokuapp.com/product?email=${email}`;
+      try {
+        const { data } = await axiosPrivate.get(url);
+        setProducts(data);
+      } catch (error) {
+        console.log(error.message);
+        if (error.response.status === 401 || error.response.status === 403) {
+          signOut(auth);
+          navigate("/login");
+        }
+      }
+    };
+    getProducts();
+  }, [user]);
 
   // item number
   let num = 0;
   // handle Remove Product
   const handleRemoveProduct = (id) => {
-    const proceed = window.confirm("Are you sure you want to remove");
+    const proceed = window.confirm("Are you  sure you want to remove");
 
     if (proceed) {
-      // console.log(id);
       const URL = `https://calm-eyrie-49116.herokuapp.com/product/${id}`;
       fetch(URL, {
         method: "DELETE",
@@ -39,7 +60,12 @@ const ManageInventorie = () => {
   //
   return (
     <div className="container">
-      <h2 className="text-center my-5">All Items</h2>
+      <h2 className="text-center my-5">All Items ({products.length})</h2>
+      {products.length === 0 ? (
+        <h3>You don't have any item. Please add item..</h3>
+      ) : (
+        ""
+      )}
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -106,7 +132,13 @@ const ManageInventorie = () => {
           ))}
         </tbody>
       </Table>
-      <Link to="/addproduct">Add New Product</Link>
+      <Link
+        style={{ width: "180px", borderRadius: "30px", fontSize: "18px" }}
+        className="buttons mx-auto buttons-hover mb-5 mt-4 d-block p-2 text-center text-decoration-none"
+        to="/addproduct"
+      >
+        Add New Item
+      </Link>
     </div>
   );
 };

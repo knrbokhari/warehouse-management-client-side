@@ -1,9 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useOneProduct from "../../hooks/useOneProduct";
 
 const UpdateSingelProduct = () => {
   const { productId } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useOneProduct(productId);
   const { image, name, discription, supplierName, sold, price } = product;
 
@@ -42,13 +43,14 @@ const UpdateSingelProduct = () => {
         console.log("success", data);
         alert("update successfully!!!");
         event.target.reset();
+        navigate("/manageinventorie");
       });
   };
 
   //
   return (
     <div className="container">
-      <h2>Update Product</h2>
+      <h2 className="text-center my-5">Update Product</h2>
       <div className="row justify-content-center align-items-center">
         <div className="col-11 col-md-5">
           <img src={image} alt="" width="100%" />

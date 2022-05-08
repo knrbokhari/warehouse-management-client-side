@@ -16,18 +16,26 @@ const Products = (props) => {
       <Card style={{ width: "400px" }}>
         <Card.Img variant="top" src={image} />
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>
-            {discription.length > 135 ? discription.slice(0, 130) : discription}
+          <Card.Title className="fs-3">{name}</Card.Title>
+          <Card.Text className="fs-4">
+            {discription.length > 105 ? discription.slice(0, 104) : discription}
+            {discription.length > 105 ? "..." : ""}
           </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroupItem>Supplier: {supplierName}</ListGroupItem>
-          <ListGroupItem>Price: ${price}</ListGroupItem>
-          <ListGroupItem>Quantity: {quantity}</ListGroupItem>
+          <ListGroupItem className="fs-4">
+            Supplier: {supplierName}
+          </ListGroupItem>
+          <ListGroupItem className="fs-4">Price: ${price}</ListGroupItem>
+          <ListGroupItem className="fs-4">Quantity: {quantity}</ListGroupItem>
         </ListGroup>
         <Card.Body>
-          <button onClick={() => navigateToProduct(_id)}>Stock Update</button>
+          <button
+            className="btn btn-success fs-4 mx-auto d-block"
+            onClick={() => navigateToProduct(_id)}
+          >
+            Stock Update
+          </button>
         </Card.Body>
       </Card>
     </div>

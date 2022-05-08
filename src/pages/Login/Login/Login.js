@@ -8,6 +8,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
+import axios from "axios";
 
 const Login = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
@@ -16,6 +17,7 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, sending, error2] =
     useSendPasswordResetEmail(auth);
+  const [errors, setErrors] = useState("");
 
   // navigate & location for
   const navigate = useNavigate();
@@ -29,19 +31,18 @@ const Login = () => {
   const handleClose = () => setShow(false);
 
   // Error handle
-  let handleError;
-  if (error || googleError || error2) {
-    handleError = (
-      <>
-        {error?.message}
-        {error2?.message}
-        {googleError?.message}
-      </>
-    );
+  if (error) {
+    setErrors();
+  }
+  if (googleError) {
+    setErrors(googleError?.message);
+  }
+  if (error2) {
+    setErrors(error?.message);
   }
 
   /// user
-  if (user || googleUser) {
+  if (googleUser) {
     navigate(from, { replace: true });
   }
 
@@ -51,12 +52,21 @@ const Login = () => {
   }
 
   // login user using email & password
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     if (email && password) {
-      signInWithEmailAndPassword(email, password);
+      await signInWithEmailAndPassword(email, password);
+      const { data } = await axios.post(
+        "https://calm-eyrie-49116.herokuapp.com/login",
+        {
+          email,
+        }
+      );
+      localStorage.setItem("accessToken", data.accessToken);
+      navigate(from, { replace: true });
+
       // reset input field
       e.target.reset();
     }
@@ -114,7 +124,7 @@ const Login = () => {
             />
             <p className="m-0 fs-5 ">Sign in with Google</p>
           </button>
-          <p className="mb-3 text-danger fs-5 text-center">{handleError}</p>
+          <p className="mb-3 text-danger fs-5 text-center">{errors}</p>
           <div className="d-flex align-items-center">
             <div
               style={{ borderBottom: "2px solid #dfdfdf", width: "40%" }}

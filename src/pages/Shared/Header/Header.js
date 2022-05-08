@@ -23,23 +23,23 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mx-auto">
-              <CustomLink className="fs-3 px-3 fw-bold" to="/">
+              <CustomLink className="fs-4 px-3 fw-bold" to="/">
                 Home
               </CustomLink>
-              <CustomLink className="fs-3 px-3 fw-bold" to="/inventory">
+              <CustomLink className="fs-4 px-3 fw-bold" to="/inventory">
                 Inventory
               </CustomLink>
-              <CustomLink className="fs-3 px-3 fw-bold" to="/about">
-                About
+              <CustomLink className="fs-4 px-3 fw-bold" to="/blogs">
+                Blogs
               </CustomLink>
-              <CustomLink className="fs-3 px-3 fw-bold" to="/blog">
-                Blog
+              <CustomLink className="fs-4 px-3 fw-bold" to="/contact">
+                Contacts
               </CustomLink>
             </Nav>
             <Nav>
               {user ? (
                 <CustomLink
-                  className="fs-3 px-3 fw-bold"
+                  className="fs-4 px-3 fw-bold"
                   to="/manageinventorie"
                 >
                   Manage Inventorie
@@ -50,13 +50,13 @@ const Header = () => {
               {user ? (
                 <button
                   onClick={logout}
-                  className="fs-3 bg-transparent border-0 px-3 p-0 fw-bold"
+                  className="fs-4 bg-transparent border-0 px-3 p-0 fw-bold"
                   style={{ color: "#275aa9", width: "110px" }}
                 >
                   Log out
                 </button>
               ) : (
-                <CustomLink className="fs-3 px-3 fw-bold" to="/login">
+                <CustomLink className="fs-4 px-3 fw-bold" to="/login">
                   Login
                 </CustomLink>
               )}

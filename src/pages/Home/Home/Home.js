@@ -13,12 +13,14 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <Services></Services>
-      <div className="container">
-        <h2 className="pt-5">Inventory</h2>
+      <div className="container pb-3">
+        <h2 className="pt-5 text-center">Inventory Items</h2>
         <div className="row mt-5 justify-content-center">
           {products.slice(0, 6).map((product) => (
             <Products key={product._id} product={product}></Products>
           ))}
+        </div>
+        {products?.length > 6 ? (
           <Link
             style={{
               width: "150px",
@@ -27,13 +29,14 @@ const Home = () => {
               height: "60px",
               padding: "15px 40px",
             }}
-            className="buttons buttons-hover text-decoration-none mb-5"
+            className="buttons buttons-hover d-block mx-auto text-decoration-none mb-5"
             to="/inventory"
           >
             See all
-            {/* <p className="m-0">See All</p> */}
           </Link>
-        </div>
+        ) : (
+          ""
+        )}
       </div>
       <Specialties></Specialties>
     </div>

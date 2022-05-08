@@ -132,7 +132,7 @@ const SignUp = () => {
                 placeholder="Password"
               />
             </Form.Group>
-            <p className="my-2">{errors?.message}</p>
+            <p className="my-2">{errors}</p>
             <button
               className="w-100 d-block buttons buttons-hover m-0 mt-4 fs-5 p-2"
               type="submit"
