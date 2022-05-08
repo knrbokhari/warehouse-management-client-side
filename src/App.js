@@ -35,13 +35,28 @@ function App() {
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route
           path="/manageinventorie"
-          element={<ManageInventorie></ManageInventorie>}
+          element={
+            <RequireAuth>
+              <ManageInventorie></ManageInventorie>
+            </RequireAuth>
+          }
         ></Route>
         <Route
           path="/updateproduct/:productId"
-          element={<UpdateSingelProduct></UpdateSingelProduct>}
+          element={
+            <RequireAuth>
+              <UpdateSingelProduct></UpdateSingelProduct>
+            </RequireAuth>
+          }
         ></Route>
-        <Route path="/addproduct" element={<AddProduct></AddProduct>}></Route>
+        <Route
+          path="/addproduct"
+          element={
+            <RequireAuth>
+              <AddProduct></AddProduct>
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
